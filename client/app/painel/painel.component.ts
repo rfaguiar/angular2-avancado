@@ -1,27 +1,28 @@
-import {Component, Input, OnInit, ViewEncapsulation, ElementRef} from '@angular/core';
+import { Component, Input, OnInit, ElementRef } from '@angular/core';
 
 @Component({
+    moduleId: module.id,
     selector: 'painel',
-    templateUrl: 'app/painel/components/painel.html',
-    styleUrls: ['app/painel/components/painel.css'],
-    encapsulation: ViewEncapsulation.Emulated
+    templateUrl: './painel.component.html',
+    styleUrls: ['./painel.component.css'],
 })
-export class Painel implements OnInit {
+export class PainelComponent implements OnInit {
 
     @Input() titulo: string;
     private elemento: ElementRef;
-    
+
     constructor(elemento: ElementRef) {
         this.elemento = elemento; 
     }   
-    
+
     ngOnInit() {
-        this.titulo = this.titulo.length > 10 ?
+        this.titulo = this.titulo.length > 7 ?
              this.titulo.substr(0, 7) + '...' : 
              this.titulo;
     }
-    
+
     fadeOut(cb) {   
+       // erro de compilação! Não entra o $!
         $(this.elemento.nativeElement).fadeOut(cb);
     }
 }
